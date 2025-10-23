@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSmart AI | Enterprise Agriculture Intelligence Platform</title>
+    <meta name="description" content="AI-powered precision agriculture platform delivering 25% yield increase and 30% cost reduction through machine learning optimization">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00C897;
+            --primary-dark: #00A87C;
+            --primary-light: #33F5C7;
+            --secondary: #6C63FF;
+            --accent: #FF6B6B;
+            --dark: #1A1F36;
+            --dark-light: #2D3748;
+            --gray: #718096;
+            --gray-light: #E2E8F0;
+            --white: #FFFFFF;
+            --success: #48BB78;
+            --warning: #ED8936;
+            --danger: #F56565;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: var(--white);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Premium Glass Effect */
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(108, 99, 255, 0.3);
+            box-shadow: var(--shadow);
+        }
+
+        /* Login Page */
+        .login-page {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 200, 151, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .login-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        .login-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .login-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo i {
+            font-size: 3rem;
+        }
+
+        .login-tagline {
+            font-size: 1.5rem;
+            color: var(--gray-light);
+            margin-bottom: 3rem;
+            line-height: 1.4;
+        }
+
+        .login-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .login-stat {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .login-stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-stat-label {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .login-form-container {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            backdrop-filter: blur(20px);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .login-subtitle {
+            color: var(--gray-light);
+            font-size: 1rem;
+        }
+
+        .form-toggle {
+            display: flex;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 5px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--gray-light);
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--gray-light);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 3px rgba(0, 200, 151, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Home Page */
+        .home-page {
+            display: none;
+        }
+
+        /* Premium Header */
+        .premium-header {
+            background: rgba(26, 31, 54, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(108, 99, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(0, 200, 151, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--gray-light);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-light);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .premium-card {
+            padding: 2.5rem;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .card-header i {
+            font-size: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Input Form */
+        .input-group {
+            margin-bottom: 2rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--gray-light);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 0 3px rgba(0, 200, 151, 0.1);
+        }
+
+        .input-unit {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .range-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.4);
+        }
+
+        .analyze-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Results Section */
+        .results-section {
+            display: none;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-highlight {
+            background: var(--gradient);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .result-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Alert System */
+        .alert {
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-left: 4px solid;
+        }
+
+        .alert-success {
+            background: rgba(72, 187, 120, 0.1);
+            border-left-color: var(--success);
+            color: var(--success);
+        }
+
+        .alert-warning {
+            background: rgba(237, 137, 54, 0.1);
+            border-left-color: var(--warning);
+            color: var(--warning);
+        }
+
+        .alert-danger {
+            background: rgba(245, 101, 101, 0.1);
+            border-left-color: var(--danger);
+            color: var(--danger);
+        }
+
+        /* Nutrient Cards */
+        .nutrient-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .nutrient-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+        .nutrient-card:hover {
+            transform: translateX(5px);
+        }
+
+        .nutrient-danger { border-left-color: var(--danger); }
+        .nutrient-warning { border-left-color: var(--warning); }
+        .nutrient-success { border-left-color: var(--success); }
+
+        .nutrient-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .nutrient-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .nutrient-status {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .status-danger { background: var(--danger); }
+        .status-warning { background: var(--warning); }
+        .status-success { background: var(--success); }
+
+        /* Business Intelligence */
+        .business-intel {
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .intel-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .intel-item {
+            text-align: center;
+        }
+
+        .intel-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .intel-label {
+            font-size: 0.9rem;
+            color: var(--gray-light);
+        }
+
+        /* Loading Animation */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .ai-loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 2rem 0;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(108, 99, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .premium-footer {
+            background: rgba(26, 31, 54, 0.95);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-links a {
+            display: block;
+            color: var(--gray);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .login-page {
+                flex-direction: column;
+            }
+            
+            .login-left {
+                padding: 2rem;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .intel-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .login-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-page" id="loginPage">
+        <div class="login-left">
+            <div class="login-logo">
+                <i class="fas fa-seedling"></i>
+                AgriSmart AI
+            </div>
+            <div class="login-tagline">
+                Enterprise AI platform transforming agriculture through predictive analytics and machine learning optimization.
+            </div>
+            <div class="login-stats">
+                <div class="login-stat">
+                    <div class="login-stat-number">25%</div>
+                    <div class="login-stat-label">Average Yield Increase</div>
+                </div>
+                <div class="login-stat">
+                    <div class="login-stat-number">30%</div>
+                    <div class="login-stat-label">Cost Reduction</div>
+                </div>
+                <div class="login-stat">
+                    <div class="login-stat-number">95%</div>
+                    <div class="login-stat-label">Prediction Accuracy</div>
+                </div>
+                <div class="login-stat">
+                    <div class="login-stat-number">2M+</div>
+                    <div class="login-stat-label">Acres Optimized</div>
+                </div>
+            </div>
+        </div>
+        <div class="login-right">
+            <div class="login-form-container glass-card">
+                <div class="login-header">
+                    <h1 class="login-title">Welcome to AgriSmart AI</h1>
+                    <p class="login-subtitle">Enterprise Agriculture Intelligence Platform</p>
+                </div>
+                
+                <div class="form-toggle">
+                    <button class="toggle-btn active" id="loginToggle">Login</button>
+                    <button class="toggle-btn" id="signupToggle">Sign Up</button>
+                </div>
+                
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" placeholder="enterprise@agribusiness.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Access Enterprise Dashboard
+                    </button>
+                </form>
+                
+                <form id="signupForm" class="auth-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" placeholder="John Agriculture" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Business Email</label>
+                        <input type="email" id="signupEmail" placeholder="ceo@agribusiness.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="farmSize">Farm Size (acres)</label>
+                        <input type="number" id="farmSize" min="1" placeholder="500" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="crops">Primary Crops</label>
+                        <input type="text" id="crops" placeholder="Corn, Soybeans, Wheat" required>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-rocket"></i>
+                        Start Enterprise Trial
+                    </button>
+                </form>
+                
+                <div class="form-footer">
+                    Trusted by 500+ agricultural enterprises worldwide
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <div class="home-page" id="homePage">
+        <header class="premium-header">
+            <div class="container">
+                <nav class="navbar">
+                    <div class="logo">
+                        <i class="fas fa-seedling"></i>
+                        AgriSmart AI
+                    </div>
+                    <button class="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="nav-links">
+                        <a href="#" class="nav-tab" data-tab="dashboard">Dashboard</a>
+                        <a href="#" class="nav-tab" data-tab="analytics">Analytics</a>
+                        <a href="#" class="nav-tab" data-tab="roi">ROI Calculator</a>
+                        <a href="#" class="nav-tab" data-tab="enterprise">Enterprise</a>
+                        <div class="user-menu">
+                            <div class="user-avatar" id="userAvatar">EA</div>
+                            <button class="logout-btn" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="container">
+                <h1>Enterprise Agriculture Intelligence</h1>
+                <p>AI-powered precision agriculture delivering 25% yield increase and 30% cost reduction through machine learning optimization</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-card glass-card">
+                        <div class="stat-number">25%</div>
+                        <div class="stat-label">Yield Increase</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Cost Reduction</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Prediction Accuracy</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-number">2M+</div>
+                        <div class="stat-label">Acres Optimized</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="main-content">
+                <!-- Input Section -->
+                <div class="premium-card glass-card">
+                    <div class="card-header">
+                        <i class="fas fa-flask"></i>
+                        <h2>Soil Intelligence Analysis</h2>
+                    </div>
+                    
+                    <form id="soilForm">
+                        <div class="input-group">
+                            <label>Nitrogen Level (N)</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="N" name="N" min="0" max="200" value="75" required>
+                                <span class="input-unit">kg/ha</span>
+                            </div>
+                            <div class="range-indicators">
+                                <span>Low</span>
+                                <span>Optimal</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Phosphorus Level (P)</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="P" name="P" min="0" max="200" value="45" required>
+                                <span class="input-unit">kg/ha</span>
+                            </div>
+                            <div class="range-indicators">
+                                <span>Low</span>
+                                <span>Optimal</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Potassium Level (K)</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="K" name="K" min="0" max="200" value="60" required>
+                                <span class="input-unit">kg/ha</span>
+                            </div>
+                            <div class="range-indicators">
+                                <span>Low</span>
+                                <span>Optimal</span>
+                                <span>High</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Temperature</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="Temperature" name="Temperature" min="0" max="50" value="25" step="0.1" required>
+                                <span class="input-unit">°C</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Humidity</label>
+                            <div class="input-wrapper">
+                                <input type="number" id="Humidity" name="Humidity" min="0" max="100" value="65" required>
+                                <span class="input-unit">%</span>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="analyze-btn" id="analyzeBtn">
+                            <i class="fas fa-brain"></i>
+                            Analyze with AI
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Section -->
+                <div class="premium-card glass-card results-section" id="resultsSection">
+                    <div class="card-header">
+                        <i class="fas fa-chart-network"></i>
+                        <h2>AI Analysis Results</h2>
+                    </div>
+
+                    <div class="loading" id="loading">
+                        <div class="ai-loader"></div>
+                        <p>AgriSmart AI is analyzing your soil data...</p>
+                        <p class="analyzing-text">Optimizing crop selection • Calculating ROI • Generating insights</p>
+                    </div>
+
+                    <div id="resultsContent">
+                        <!-- Results will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Tab -->
+            <section class="tab-content active" id="dashboard">
+                <div class="card-header">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h2>Enterprise Dashboard</h2>
+                </div>
+                <div class="tab-grid">
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="feature-title">AI-Powered Crop Selection</h3>
+                        <p>Machine learning algorithms analyze soil conditions, weather patterns, and market trends to recommend the most profitable crops.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cloud-sun-rain"></i>
+                        </div>
+                        <h3 class="feature-title">Precision Weather Analytics</h3>
+                        <p>Hyper-local weather forecasting and climate modeling for informed decisions about planting, irrigation, and harvesting.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3 class="feature-title">Smart Irrigation System</h3>
+                        <p>IoT-enabled sensors and AI algorithms optimize water usage, reducing consumption by up to 40% while maintaining crop health.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Tab -->
+            <section class="tab-content" id="analytics">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h2>Farm Analytics</h2>
+                </div>
+                <div class="tab-grid">
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 class="feature-title">Crop Health Monitoring</h3>
+                        <p>Real-time monitoring of crop health using satellite imagery and drone data to identify stress factors before they impact yield.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="feature-title">Yield Prediction</h3>
+                        <p>Accurate yield forecasting based on historical data, current conditions, and predictive modeling for better planning.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h3 class="feature-title">Market Price Analysis</h3>
+                        <p>AI-driven market analysis to help you time your sales for maximum profitability based on supply and demand trends.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ROI Calculator Tab -->
+            <section class="tab-content" id="roi">
+                <div class="card-header">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h2>ROI Calculator</h2>
+                </div>
+                <div class="tab-grid">
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3 class="feature-title">Cost-Benefit Analysis</h3>
+                        <p>Detailed analysis of your investment in AgriSmart AI, showing projected ROI based on your specific farm conditions.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <h3 class="feature-title">Input Cost Optimization</h3>
+                        <p>Reduce fertilizer, pesticide, and water costs by applying them only where and when needed based on AI recommendations.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Risk Mitigation</h3>
+                        <p>Reduce financial risks associated with weather events, pest outbreaks, and market fluctuations through predictive insights.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enterprise Tab -->
+            <section class="tab-content" id="enterprise">
+                <div class="card-header">
+                    <i class="fas fa-building"></i>
+                    <h2>Enterprise Solutions</h2>
+                </div>
+                <div class="tab-grid">
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h3 class="feature-title">Multi-Farm Management</h3>
+                        <p>Centralized management for multiple farm locations with unified analytics and reporting across your entire operation.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="feature-title">Data Integration</h3>
+                        <p>Seamless integration with existing farm management systems, IoT devices, and agricultural equipment.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="feature-title">Dedicated Support</h3>
+                        <p>24/7 enterprise support with dedicated account managers and agricultural experts for your business.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="premium-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div>
+                        <div class="footer-logo">
+                            <i class="fas fa-seedling"></i>
+                            AgriSmart AI
+                        </div>
+                        <p>Enterprise AI platform transforming agriculture through data-driven insights and machine learning optimization.</p>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Technology</h4>
+                        <a href="#">AI Models</a>
+                        <a href="#">API Documentation</a>
+                        <a href="#">Research Papers</a>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Investor Relations</a>
+                        <a href="#">Careers</a>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Contact</h4>
+                        <a href="#">Request Demo</a>
+                        <a href="#">Enterprise Sales</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_BASE_URL = 'http://localhost:5000/api/v1';
+
+        // User authentication state
+        let currentUser = null;
+
+        // DOM Elements
+        const loginPage = document.getElementById('loginPage');
+        const homePage = document.getElementById('homePage');
+        const loginToggle = document.getElementById('loginToggle');
+        const signupToggle = document.getElementById('signupToggle');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const soilForm = document.getElementById('soilForm');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const resultsSection = document.getElementById('resultsSection');
+        const loading = document.getElementById('loading');
+        const resultsContent = document.getElementById('resultsContent');
+
+        // Form Toggle
+        loginToggle.addEventListener('click', function() {
+            loginToggle.classList.add('active');
+            signupToggle.classList.remove('active');
+            loginForm.style.display = 'block';
+            signupForm.style.display = 'none';
+        });
+
+        signupToggle.addEventListener('click', function() {
+            signupToggle.classList.add('active');
+            loginToggle.classList.remove('active');
+            signupForm.style.display = 'block';
+            loginForm.style.display = 'none';
+        });
+
+        // Login Form Submission
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!email || !password) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            // Simulate authentication
+            currentUser = {
+                name: email.split('@')[0],
+                email: email,
+                farmSize: '500',
+                crops: 'Corn, Soybeans, Wheat'
+            };
+            
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            showHomePage();
+            showNotification('Welcome to AgriSmart AI Enterprise Dashboard', 'success');
+        });
+
+        // Signup Form Submission
+        signupForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const farmSize = document.getElementById('farmSize').value;
+            const crops = document.getElementById('crops').value;
+            
+            if (!name || !email || !password || !farmSize || !crops) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            currentUser = {
+                name: name,
+                email: email,
+                farmSize: farmSize,
+                crops: crops
+            };
+            
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            showHomePage();
+            showNotification('Enterprise trial activated! Welcome to AgriSmart AI', 'success');
+        });
+
+        // Logout Function
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            showLoginPage();
+            showNotification('Logged out successfully', 'info');
+        });
+
+        // Soil Analysis Form
+        soilForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {
+                N: parseFloat(formData.get('N')),
+                P: parseFloat(formData.get('P')),
+                K: parseFloat(formData.get('K')),
+                Temperature: parseFloat(formData.get('Temperature')),
+                Humidity: parseFloat(formData.get('Humidity'))
+            };
+
+            // Show loading state
+            analyzeBtn.disabled = true;
+            analyzeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+            loading.style.display = 'block';
+            resultsContent.innerHTML = '';
+            resultsSection.style.display = 'block';
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/predict`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    displayResults(result);
+                    showNotification('AI analysis completed successfully', 'success');
+                } else {
+                    throw new Error(result.error || 'Prediction failed');
+                }
+            } catch (error) {
+                console.error('Prediction error:', error);
+                showNotification('Failed to get prediction. Please try again.', 'error');
+                displayError();
+            } finally {
+                analyzeBtn.disabled = false;
+                analyzeBtn.innerHTML = '<i class="fas fa-brain"></i> Analyze with AI';
+                loading.style.display = 'none';
+            }
+        });
+
+        // Display Results
+        function displayResults(data) {
+            let html = `
+                <div class="results-grid">
+                    <div class="result-highlight">
+                        <div class="result-label">Recommended Crop</div>
+                        <div class="result-value">${data.recommended_crop}</div>
+                        <div>Suitability: ${data.crop_suitability_score}/100</div>
+                    </div>
+                    <div class="result-highlight">
+                        <div class="result-label">Soil Moisture</div>
+                        <div class="result-value">${data.moisture}%</div>
+                        <div>Level: ${data.moisture_level}</div>
+                    </div>
+                </div>
+
+                <div class="alert alert-success">
+                    <i class="fas fa-rocket"></i>
+                    <div>
+                        <strong>AI Prediction Confidence: ${(data.confidence_score * 100).toFixed(1)}%</strong><br>
+                        Powered by ${data.prediction_engine === 'ai_models' ? 'AI Models' : 'Expert System'}
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px;">
+                        <strong>Sustainability Score</strong><br>
+                        <span style="font-size: 2rem; color: var(--primary)">${data.sustainability_score}</span>/100
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px;">
+                        <strong>Risk Assessment</strong><br>
+                        <span style="font-size: 1.5rem; color: ${data.risk_assessment === 'Low' ? 'var(--success)' : 'var(--warning)'}">${data.risk_assessment}</span>
+                    </div>
+                </div>
+            `;
+
+            // Nutrient Analysis
+            if (data.nutrient_analysis && data.nutrient_analysis.length > 0) {
+                html += `<h3 style="margin: 2rem 0 1rem 0; color: var(--white);">Nutrient Intelligence</h3>`;
+                html += `<div class="nutrient-grid">`;
+                
+                data.nutrient_analysis.forEach(nutrient => {
+                    html += `
+                        <div class="nutrient-card nutrient-${nutrient.level}">
+                            <div class="nutrient-header">
+                                <span class="nutrient-name">${nutrient.nutrient}</span>
+                                <span class="nutrient-status status-${nutrient.level}">${nutrient.status.toUpperCase()}</span>
+                            </div>
+                            <div style="margin-bottom: 0.5rem;">
+                                <strong>Current:</strong> ${nutrient.current_value} | 
+                                <strong>Optimal:</strong> ${nutrient.optimal_range}
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--gray-light);">
+                                ${nutrient.recommendation}
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
+            }
+
+            // Business Intelligence
+            if (data.business_intelligence) {
+                html += `
+                    <div class="business-intel">
+                        <h3 style="margin-bottom: 1rem; color: var(--white);">
+                            <i class="fas fa-chart-line"></i> Business Intelligence
+                        </h3>
+                        <div class="intel-grid">
+                            <div class="intel-item">
+                                <div class="intel-value">${data.business_intelligence.market_demand}</div>
+                                <div class="intel-label">Market Demand</div>
+                            </div>
+                            <div class="intel-item">
+                                <div class="intel-value">${data.business_intelligence.profit_potential}</div>
+                                <div class="intel-label">Profit Potential</div>
+                            </div>
+                            <div class="intel-item">
+                                <div class="intel-value">${data.business_intelligence.estimated_yield_increase}</div>
+                                <div class="intel-label">Yield Increase</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            resultsContent.innerHTML = html;
+        }
+
+        function displayError() {
+            resultsContent.innerHTML = `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <div>
+                        <strong>Analysis Failed</strong><br>
+                        Please check your connection and try again. If the problem persists, contact support.
+                    </div>
+                </div>
+            `;
+        }
+
+        // Page Navigation
+        function showHomePage() {
+            loginPage.style.display = 'none';
+            homePage.style.display = 'block';
+            
+            if (currentUser) {
+                document.getElementById('userAvatar').textContent = 
+                    currentUser.name.split(' ').map(n => n[0]).join('').toUpperCase();
+            }
+        }
+
+        function showLoginPage() {
+            loginPage.style.display = 'flex';
+            homePage.style.display = 'none';
+            loginForm.reset();
+            signupForm.reset();
+        }
+
+        // Tab Navigation
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tabId = this.getAttribute('data-tab');
+                
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                document.getElementById(tabId).classList.add('active');
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Mobile Menu
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Notification System
+        function showNotification(message, type = 'info') {
+            // Remove existing notifications
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(notif => notif.remove());
+
+            const notification = document.createElement('div');
+            notification.className = `notification alert alert-${type}`;
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.zIndex = '10000';
+            notification.style.minWidth = '300px';
+            notification.innerHTML = `
+                <i class="fas fa-${getNotificationIcon(type)}"></i>
+                <div>${message}</div>
+            `;
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        function getNotificationIcon(type) {
+            const icons = {
+                success: 'check-circle',
+                error: 'exclamation-triangle',
+                warning: 'exclamation-circle',
+                info: 'info-circle'
+            };
+            return icons[type] || 'info-circle';
+        }
+
+        // Input validation
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', function() {
+                const value = parseFloat(this.value);
+                const min = parseFloat(this.min);
+                const max = parseFloat(this.max);
+                
+                if (value < min) this.value = min;
+                if (value > max) this.value = max;
+            });
+        });
+
+        // Initialize app
+        function init() {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                showHomePage();
+            } else {
+                showLoginPage();
+            }
+
+            // Check API health
+            fetch(`${API_BASE_URL}/health`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.models_loaded) {
+                        console.log('✅ Backend connected successfully');
+                    } else {
+                        showNotification('Backend models not loaded - using fallback mode', 'warning');
+                    }
+                })
+                .catch(error => {
+                    console.error('❌ Backend connection failed:', error);
+                    showNotification('Cannot connect to AI backend - using offline mode', 'error');
+                });
+        }
+
+        // Start the application
+        init();
+    </script>
+</body>
+</html>
